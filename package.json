@@ -49,6 +49,7 @@
 		]
 	},
 	"dependencies": {
-		"@unpic/svelte": "^1.0.0"
+		"@unpic/svelte": "^1.0.0",
+		"framer-motion": "^12.23.9"
 	}
 }
