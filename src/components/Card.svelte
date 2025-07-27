@@ -2,23 +2,27 @@
   import styles from '../styles/components/Card.module.scss'
   
   interface Props {
-    variant?: 'elevated' | 'flat'
+    variant?: 'elevated' | 'flat' | 'bordered' | 'dark'
     size?: 'compact' | 'spacious'
+    clickable?: boolean
     title?: string
     subtitle?: string
     header?: any
     children?: any
     footer?: any
+    onclick?: (event: MouseEvent) => void
   }
   
   let {
     variant,
     size,
+    clickable = false,
     title,
     subtitle,
     header,
     children,
     footer,
+    onclick,
     ...restProps
   }: Props = $props()
   
@@ -27,12 +31,13 @@
     
     if (variant) classes.push(styles[variant])
     if (size) classes.push(styles[size])
+    if (clickable) classes.push(styles.clickable)
     
     return classes.join(' ')
   })
 </script>
 
-<div class={cardClass()} {...restProps}>
+<div class={cardClass()} onclick={onclick} {...restProps}>
   {#if header || title || subtitle}
     <div class={styles.header}>
       {#if header}

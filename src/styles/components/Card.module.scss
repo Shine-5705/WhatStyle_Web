@@ -1,65 +1,113 @@
 @use '../variables' as *;
+@use 'sass:color';
 
 .card {
-  background-color: white;
-  border: 1px solid #e5e7eb;
-  border-radius: $radius-lg;
-  box-shadow: $shadow;
+  background-color: $surface;
+  border: 1px solid $neutral-mid;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-sm;
   overflow: hidden;
-  transition: $transition;
+  transition: $transition-all;
 
   &:hover {
     box-shadow: $shadow-lg;
     transform: translateY(-2px);
+    border-color: color.adjust($neutral-mid, $lightness: -5%);
   }
 }
 
 .header {
   padding: $space-6 $space-6 0;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid $neutral-light;
 }
 
 .title {
+  font-family: $font-family-display;
   font-size: $font-size-xl;
-  font-weight: 600;
-  color: $dark;
+  font-weight: $font-weight-semibold;
+  font-variation-settings: 'wght' #{$font-weight-semibold};
+  color: $text-primary;
   margin: 0 0 $space-2 0;
+  line-height: $line-height-tight;
 }
 
 .subtitle {
   font-size: $font-size-sm;
-  color: $secondary;
+  color: $text-muted;
   margin: 0;
+  line-height: $line-height-relaxed;
 }
 
 .body {
   padding: $space-6;
+  color: $text-secondary;
+  line-height: $line-height-relaxed;
 }
 
 .footer {
   padding: 0 $space-6 $space-6;
-  border-top: 1px solid #f3f4f6;
-  background-color: #f9fafb;
+  border-top: 1px solid $neutral-light;
+  background-color: $neutral-light;
 }
 
 // Variants
 .elevated {
   border: none;
   box-shadow: $shadow-lg;
+  background-color: $surface;
 
   &:hover {
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    box-shadow: $shadow-2xl;
+    transform: translateY(-4px);
   }
 }
 
 .flat {
   border: none;
   box-shadow: none;
-  background-color: #f9fafb;
+  background-color: $neutral-light;
 
   &:hover {
-    background-color: #f3f4f6;
+    background-color: $neutral-mid;
     transform: none;
+    box-shadow: $shadow-xs;
+  }
+}
+
+.bordered {
+  border: 2px solid $primary;
+  box-shadow: $shadow-primary;
+  
+  &:hover {
+    border-color: color.adjust($primary, $lightness: -10%);
+    box-shadow: $shadow-xl;
+  }
+}
+
+.dark {
+  background-color: $surface-dark;
+  border-color: $celestial-canvas;
+  color: $text-on-dark;
+  
+  .title {
+    color: $text-on-dark;
+  }
+  
+  .subtitle {
+    color: $silver-haze;
+  }
+  
+  .body {
+    color: $neutral-mid;
+  }
+  
+  .footer {
+    background-color: $celestial-canvas;
+    border-color: $celestial-canvas;
+  }
+  
+  &:hover {
+    border-color: color.adjust($celestial-canvas, $lightness: 10%);
   }
 }
 
@@ -76,6 +124,10 @@
   .footer {
     padding: 0 $space-4 $space-4;
   }
+  
+  .title {
+    font-size: $font-size-lg;
+  }
 }
 
 .spacious {
@@ -89,5 +141,40 @@
 
   .footer {
     padding: 0 $space-8 $space-8;
+  }
+  
+  .title {
+    font-size: $font-size-2xl;
+  }
+}
+
+// Interactive states
+.clickable {
+  cursor: pointer;
+  transition: $transition-all;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-xl;
+  }
+  
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: $shadow-md;
+  }
+}
+
+// Responsive adjustments
+@media (min-width: $breakpoint-sm) {
+  .title {
+    font-size: $font-size-2xl;
+  }
+  
+  .compact .title {
+    font-size: $font-size-xl;
+  }
+  
+  .spacious .title {
+    font-size: $font-size-3xl;
   }
 }

@@ -1,34 +1,159 @@
+@use './fonts';
 @use './variables' as *;
+@use 'sass:color';
 
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: $font-family;
-  line-height: 1.5;
+  font-family: $font-family-primary;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #f8fafc;
-  color: $dark;
+  background-color: $surface;
+  color: $text-primary;
   font-size: $font-size-base;
+  font-variation-settings: 'wght' #{$font-weight-regular};
+  transition: $transition-colors;
 }
 
+// Typography hierarchy
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-  font-weight: 600;
-  line-height: 1.25;
+  font-family: $font-family-display;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  letter-spacing: $letter-spacing-tight;
+  color: $text-primary;
+}
+
+h1 {
+  font-size: $font-size-4xl;
+  font-variation-settings: 'wght' #{$font-weight-bold};
+  
+  @media (min-width: $breakpoint-md) {
+    font-size: $font-size-5xl;
+  }
+  
+  @media (min-width: $breakpoint-lg) {
+    font-size: $font-size-6xl;
+  }
+}
+
+h2 {
+  font-size: $font-size-3xl;
+  font-variation-settings: 'wght' #{$font-weight-semibold};
+  
+  @media (min-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
+  }
+}
+
+h3 {
+  font-size: $font-size-2xl;
+  font-variation-settings: 'wght' #{$font-weight-semibold};
+  
+  @media (min-width: $breakpoint-md) {
+    font-size: $font-size-3xl;
+  }
+}
+
+h4 {
+  font-size: $font-size-xl;
+  font-variation-settings: 'wght' #{$font-weight-medium};
+}
+
+h5 {
+  font-size: $font-size-lg;
+  font-variation-settings: 'wght' #{$font-weight-medium};
+}
+
+h6 {
+  font-size: $font-size-base;
+  font-variation-settings: 'wght' #{$font-weight-medium};
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-wide;
 }
 
 p {
   margin: 0 0 $space-4 0;
+  line-height: $line-height-relaxed;
+  color: $text-secondary;
+}
+
+// Links
+a {
+  color: $primary;
+  text-decoration: none;
+  transition: $transition-colors;
+  
+  &:hover {
+    color: color.adjust($primary, $lightness: -10%);
+    text-decoration: underline;
+  }
+  
+  &:focus {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+  }
+}
+
+// Form elements
+button, input, textarea, select {
+  font-family: inherit;
+  font-variation-settings: inherit;
 }
 
 button {
-  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  
+  &:focus {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+  }
+}
+
+// Utility classes
+.font-light {
+  font-variation-settings: 'wght' #{$font-weight-light};
+}
+
+.font-regular {
+  font-variation-settings: 'wght' #{$font-weight-regular};
+}
+
+.font-medium {
+  font-variation-settings: 'wght' #{$font-weight-medium};
+}
+
+.font-semibold {
+  font-variation-settings: 'wght' #{$font-weight-semibold};
+}
+
+.font-bold {
+  font-variation-settings: 'wght' #{$font-weight-bold};
+}
+
+// Screen reader only
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

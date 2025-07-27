@@ -1,12 +1,13 @@
 <script lang="ts">
-  import styles from '../styles/components/Button.module.scss';
+  import styles from '../styles/components/Button.module.scss'
   
   interface Props {
-    variant?: 'primary' | 'secondary' | 'success' | 'danger'
+    variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'ghost'
     size?: 'sm' | 'lg' | 'xl'
     disabled?: boolean
     loading?: boolean
     full?: boolean
+    icon?: boolean
     type?: 'button' | 'submit' | 'reset'
     onclick?: (event: MouseEvent) => void
     children?: any
@@ -18,6 +19,7 @@
     disabled = false,
     loading = false,
     full = false,
+    icon = false,
     type = 'button',
     onclick,
     children,
@@ -32,6 +34,7 @@
     if (variant) classes.push(styles[variant])
     if (size) classes.push(styles[size])
     if (full) classes.push(styles.full)
+    if (icon) classes.push(styles.icon)
     if (loading) classes.push(styles.loading)
     
     return classes.join(' ')
