@@ -1,0 +1,402 @@
+@use '../variables' as *;
+@use 'sass:color';
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, 
+    color.mix($prairie-land, $tomato-curry, 85%) 0%,
+    color.mix($silver-haze, $prairie-land, 70%) 15%,
+    color.mix($white-chalk, $silver-haze, 90%) 30%,
+    $white-chalk 50%,
+    color.mix($white-chalk, $silver-haze, 90%) 70%,
+    color.mix($silver-haze, $prairie-land, 70%) 85%,
+    color.mix($prairie-land, $tomato-curry, 85%) 100%
+  );
+  overflow: hidden;
+  padding: $space-20 $space-4 $space-8;
+}
+
+.container {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+}
+
+.announcement {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  background: rgba($white-chalk, 0.8);
+  border: 1px solid color.mix($silver-haze, $prairie-land, 50%);
+  border-radius: $radius-full;
+  padding: $space-2 $space-4;
+  margin-bottom: $space-8;
+  font-size: $font-size-sm;
+  font-variation-settings: 'wght' #{$font-weight-medium};
+  color: $text-secondary;
+  backdrop-filter: blur(10px);
+  transition: $transition-all;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+    border-color: $prairie-land;
+  }
+
+  .icon {
+    color: $primary;
+    font-size: $font-size-base;
+  }
+
+  .arrow {
+    margin-left: $space-1;
+    transition: $transition-transform;
+  }
+
+  &:hover .arrow {
+    transform: translateX(4px);
+  }
+}
+
+.headline {
+  margin-bottom: $space-6;
+  
+  .title {
+    font-family: $font-family-display;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-variation-settings: 'wght' #{$font-weight-bold};
+    line-height: $line-height-tight;
+    color: $text-primary;
+    margin-bottom: $space-4;
+    
+    .primary {
+      color: $text-primary;
+    }
+  }
+
+  .subtitle {
+    background: linear-gradient(135deg, 
+      $primary 0%,
+      color.mix($primary, $prairie-land, 70%) 25%,
+      $prairie-land 50%,
+      color.mix($prairie-land, $silver-haze, 60%) 75%,
+      color.mix($silver-haze, $celestial-canvas, 80%) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: $font-family-display;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-variation-settings: 'wght' #{$font-weight-bold};
+    line-height: $line-height-tight;
+    margin: 0;
+  }
+}
+
+.description {
+  font-size: $font-size-lg;
+  color: $text-muted;
+  max-width: 600px;
+  margin: 0 auto $space-10 auto;
+  line-height: $line-height-relaxed;
+  font-variation-settings: 'wght' #{$font-weight-regular};
+}
+
+.emailIcon {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto $space-8 auto;
+  background: linear-gradient(135deg, $white-chalk, $silver-haze);
+  border-radius: $radius-xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $shadow-lg;
+  border: 2px solid rgba($prairie-land, 0.3);
+
+  &::before {
+    content: '✉️';
+    font-size: 3rem;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: linear-gradient(135deg, 
+      rgba($primary, 0.2), 
+      rgba($prairie-land, 0.2), 
+      rgba($silver-haze, 0.1)
+    );
+    border-radius: $radius-xl;
+    z-index: -1;
+    animation: pulse 2s ease-in-out infinite;
+  }
+}
+
+// Wave-like line pattern (like line graph)
+.line {
+  position: absolute;
+  height: 4px;
+  border-radius: $radius-full;
+  animation-duration: 12s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+
+  &.line1 {
+    top: 45%;
+    left: -30%;
+    width: 160%;
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      rgba($primary, 0.6) 15%,
+      rgba($prairie-land, 0.8) 30%,
+      rgba($primary, 0.6) 45%,
+      rgba($prairie-land, 0.4) 60%,
+      rgba($primary, 0.5) 75%,
+      transparent 100%
+    );
+    clip-path: polygon(
+      0% 50%, 5% 30%, 10% 70%, 15% 20%, 20% 80%, 25% 40%, 30% 60%, 
+      35% 25%, 40% 75%, 45% 35%, 50% 65%, 55% 30%, 60% 70%, 65% 40%, 
+      70% 60%, 75% 25%, 80% 75%, 85% 35%, 90% 65%, 95% 30%, 100% 50%
+    );
+    animation-name: waveFlow;
+    animation-delay: 0s;
+  }
+
+  &.line2 {
+    top: 55%;
+    right: -30%;
+    width: 160%;
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      rgba($celestial-canvas, 0.4) 15%,
+      rgba($silver-haze, 0.6) 30%,
+      rgba($celestial-canvas, 0.5) 45%,
+      rgba($prairie-land, 0.3) 60%,
+      rgba($celestial-canvas, 0.4) 75%,
+      transparent 100%
+    );
+    clip-path: polygon(
+      0% 50%, 5% 70%, 10% 30%, 15% 80%, 20% 20%, 25% 60%, 30% 40%, 
+      35% 75%, 40% 25%, 45% 65%, 50% 35%, 55% 70%, 60% 30%, 65% 60%, 
+      70% 40%, 75% 75%, 80% 25%, 85% 65%, 90% 35%, 95% 70%, 100% 50%
+    );
+    animation-name: waveFlowReverse;
+    animation-delay: 2s;
+  }
+
+  &.line3 {
+    top: 35%;
+    left: -25%;
+    width: 150%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      rgba($primary, 0.3) 20%,
+      rgba($prairie-land, 0.5) 40%,
+      rgba($primary, 0.4) 60%,
+      rgba($prairie-land, 0.3) 80%,
+      transparent 100%
+    );
+    clip-path: polygon(
+      0% 50%, 8% 40%, 16% 60%, 24% 35%, 32% 65%, 40% 45%, 48% 55%, 
+      56% 40%, 64% 60%, 72% 35%, 80% 65%, 88% 45%, 96% 55%, 100% 50%
+    );
+    animation-name: waveFlow;
+    animation-delay: 4s;
+  }
+
+  &.line4 {
+    top: 65%;
+    right: -25%;
+    width: 150%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      rgba($celestial-canvas, 0.3) 20%,
+      rgba($silver-haze, 0.4) 40%,
+      rgba($celestial-canvas, 0.3) 60%,
+      rgba($prairie-land, 0.2) 80%,
+      transparent 100%
+    );
+    clip-path: polygon(
+      0% 50%, 8% 60%, 16% 40%, 24% 65%, 32% 35%, 40% 55%, 48% 45%, 
+      56% 60%, 64% 40%, 72% 65%, 80% 35%, 88% 55%, 96% 45%, 100% 50%
+    );
+    animation-name: waveFlowReverse;
+    animation-delay: 6s;
+  }
+
+  // Additional thinner lines for more detail
+  &.line5 {
+    top: 40%;
+    left: -20%;
+    width: 140%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      rgba($primary, 0.2) 25%,
+      rgba($prairie-land, 0.3) 50%,
+      rgba($primary, 0.2) 75%,
+      transparent 100%
+    );
+    clip-path: polygon(
+      0% 50%, 10% 30%, 20% 70%, 30% 25%, 40% 75%, 50% 40%, 60% 60%, 
+      70% 30%, 80% 70%, 90% 35%, 100% 50%
+    );
+    animation-name: waveFlow;
+    animation-delay: 1s;
+  }
+
+  &.line6 {
+    top: 60%;
+    right: -20%;
+    width: 140%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      rgba($celestial-canvas, 0.2) 25%,
+      rgba($silver-haze, 0.3) 50%,
+      rgba($celestial-canvas, 0.2) 75%,
+      transparent 100%
+    );
+    clip-path: polygon(
+      0% 50%, 10% 70%, 20% 30%, 30% 75%, 40% 25%, 50% 60%, 60% 40%, 
+      70% 70%, 80% 30%, 90% 65%, 100% 50%
+    );
+    animation-name: waveFlowReverse;
+    animation-delay: 3s;
+  }
+}
+
+// Animated flowing lines background
+.flowingLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+// Floating particles
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: $prairie-land;
+  border-radius: $radius-full;
+  animation: float 6s ease-in-out infinite;
+
+  &.particle1 {
+    top: 15%;
+    left: 20%;
+    animation-delay: 0s;
+  }
+
+  &.particle2 {
+    top: 30%;
+    right: 25%;
+    animation-delay: 1.5s;
+  }
+
+  &.particle3 {
+    bottom: 25%;
+    left: 30%;
+    animation-delay: 3s;
+  }
+
+  &.particle4 {
+    bottom: 40%;
+    right: 20%;
+    animation-delay: 4.5s;
+  }
+}
+
+// Framer Motion handles all line animations now
+@keyframes rotateCurve {
+  0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.2; }
+  50% { transform: rotate(180deg) scale(1.1); opacity: 0.4; }
+}
+
+@keyframes rotateCurveReverse {
+  0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.3; }
+  50% { transform: rotate(-180deg) scale(0.9); opacity: 0.5; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); opacity: 0.4; }
+  50% { transform: translateY(-20px) scale(1.2); opacity: 0.8; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes rotateCurve {
+  0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.2; }
+  50% { transform: rotate(180deg) scale(1.1); opacity: 0.4; }
+}
+
+@keyframes rotateCurveReverse {
+  0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.3; }
+  50% { transform: rotate(-180deg) scale(0.9); opacity: 0.5; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) scale(1); opacity: 0.4; }
+  50% { transform: translateY(-20px) scale(1.2); opacity: 0.8; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+// Responsive design
+@media (min-width: $breakpoint-md) {
+  .hero {
+    padding: $space-16 $space-8;
+  }
+  
+  .announcement {
+    font-size: $font-size-base;
+    padding: $space-3 $space-6;
+  }
+  
+  .description {
+    font-size: $font-size-xl;
+  }
+  
+  .emailIcon {
+    width: 140px;
+    height: 140px;
+    
+    &::before {
+      font-size: 4rem;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .emailIcon {
+    width: 160px;
+    height: 160px;
+    
+    &::before {
+      font-size: 5rem;
+    }
+  }
+}

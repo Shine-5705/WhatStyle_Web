@@ -1,6 +1,8 @@
 <script lang="ts">
   import Button from '../components/Button.svelte'
   import Card from '../components/Card.svelte'
+  import Hero from '../components/Hero.svelte'
+  import Navbar from '../components/Navbar.svelte'
   import '../styles/global.scss'
   
   let loading = $state(false)
@@ -15,14 +17,38 @@
   const handleCardClick = () => {
     console.log('Card clicked!')
   }
+  
+  const handlePrimaryClick = () => {
+    console.log('Check My Domain clicked!')
+  }
+  
+  const handleSecondaryClick = () => {
+    console.log('Learn More clicked!')
+  }
+  
+  const handleAnnouncementClick = () => {
+    console.log('Announcement clicked!')
+  }
 </script>
 
+<!-- Navigation -->
+<Navbar />
+
+<!-- Hero Section -->
+<Hero 
+  title="Build Amazing"
+  subtitle="User Experiences"
+  description="WhatStyle helps you create beautiful, responsive web applications with modern design systems and best practices."
+  announcementText="Design System v2.0 Released"
+  announcementIcon="✨"
+  primaryButtonText="Get Started"
+  secondaryButtonText="View Demo"
+  onPrimaryClick={handlePrimaryClick}
+  onSecondaryClick={handleSecondaryClick}
+  onAnnouncementClick={handleAnnouncementClick}
+/>
+
 <main class="container">
-  <header class="header">
-    <h1>WhatStyle Design System</h1>
-    <p class="subtitle">Built with Svelte 5, SCSS Modules & Author Font</p>
-  </header>
-  
   <section class="section">
     <h2>Typography Showcase</h2>
     <div class="typography-demo">
