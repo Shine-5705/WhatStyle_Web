@@ -1,0 +1,93 @@
+@use '../variables' as *;
+
+.card {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: $radius-lg;
+  box-shadow: $shadow;
+  overflow: hidden;
+  transition: $transition;
+
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+  }
+}
+
+.header {
+  padding: $space-6 $space-6 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.title {
+  font-size: $font-size-xl;
+  font-weight: 600;
+  color: $dark;
+  margin: 0 0 $space-2 0;
+}
+
+.subtitle {
+  font-size: $font-size-sm;
+  color: $secondary;
+  margin: 0;
+}
+
+.body {
+  padding: $space-6;
+}
+
+.footer {
+  padding: 0 $space-6 $space-6;
+  border-top: 1px solid #f3f4f6;
+  background-color: #f9fafb;
+}
+
+// Variants
+.elevated {
+  border: none;
+  box-shadow: $shadow-lg;
+
+  &:hover {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  }
+}
+
+.flat {
+  border: none;
+  box-shadow: none;
+  background-color: #f9fafb;
+
+  &:hover {
+    background-color: #f3f4f6;
+    transform: none;
+  }
+}
+
+// Sizes
+.compact {
+  .header {
+    padding: $space-4 $space-4 0;
+  }
+
+  .body {
+    padding: $space-4;
+  }
+
+  .footer {
+    padding: 0 $space-4 $space-4;
+  }
+}
+
+.spacious {
+  .header {
+    padding: $space-8 $space-8 0;
+  }
+
+  .body {
+    padding: $space-8;
+  }
+
+  .footer {
+    padding: 0 $space-8 $space-8;
+  }
+}

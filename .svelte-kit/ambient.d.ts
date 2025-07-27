@@ -30,7 +30,6 @@ declare module '$env/static/private' {
 	export const VSCODE_WSL_EXT_LOCATION: string;
 	export const SHLVL: string;
 	export const HOME: string;
-	export const OLDPWD: string;
 	export const DBUS_SESSION_BUS_ADDRESS: string;
 	export const WSL_DISTRO_NAME: string;
 	export const WAYLAND_DISPLAY: string;
@@ -76,16 +75,10 @@ declare module '$env/static/private' {
 	export const ELECTRON_RUN_AS_NODE: string;
 	export const VSCODE_IPC_HOOK_CLI: string;
 	export const APPLICATION_INSIGHTS_NO_STATSBEAT: string;
-	export const VITEST_VSCODE_LOG: string;
-	export const VITEST_VSCODE: string;
-	export const TEST: string;
-	export const VITEST_WS_ADDRESS: string;
-	export const VITEST: string;
+	export const VSCODE_DOTNET_INSTALL_TOOL_ORIGINAL_HOME: string;
+	export const VSCODE_L10N_BUNDLE_LOCATION: string;
+	export const ELECTRON_NO_ASAR: string;
 	export const NODE_ENV: string;
-	export const PROD: string;
-	export const DEV: string;
-	export const BASE_URL: string;
-	export const MODE: string;
 }
 
 /**
@@ -121,7 +114,6 @@ declare module '$env/dynamic/private' {
 		VSCODE_WSL_EXT_LOCATION: string;
 		SHLVL: string;
 		HOME: string;
-		OLDPWD: string;
 		DBUS_SESSION_BUS_ADDRESS: string;
 		WSL_DISTRO_NAME: string;
 		WAYLAND_DISPLAY: string;
@@ -167,16 +159,10 @@ declare module '$env/dynamic/private' {
 		ELECTRON_RUN_AS_NODE: string;
 		VSCODE_IPC_HOOK_CLI: string;
 		APPLICATION_INSIGHTS_NO_STATSBEAT: string;
-		VITEST_VSCODE_LOG: string;
-		VITEST_VSCODE: string;
-		TEST: string;
-		VITEST_WS_ADDRESS: string;
-		VITEST: string;
+		VSCODE_DOTNET_INSTALL_TOOL_ORIGINAL_HOME: string;
+		VSCODE_L10N_BUNDLE_LOCATION: string;
+		ELECTRON_NO_ASAR: string;
 		NODE_ENV: string;
-		PROD: string;
-		DEV: string;
-		BASE_URL: string;
-		MODE: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}

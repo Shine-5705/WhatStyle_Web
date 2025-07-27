@@ -1,0 +1,145 @@
+@use '../variables' as *;
+@use 'sass:color';
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family;
+  font-size: $font-size-base;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: $radius;
+  padding: $space-2 $space-4;
+  cursor: pointer;
+  transition: $transition;
+  user-select: none;
+
+  &:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px rgba($primary, 0.5);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// Variants
+.primary {
+  background-color: $primary;
+  border-color: $primary;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust($primary, $lightness: -8%);
+    border-color: color.adjust($primary, $lightness: -8%);
+  }
+
+  &:active:not(:disabled) {
+    background-color: color.adjust($primary, $lightness: -12%);
+    border-color: color.adjust($primary, $lightness: -12%);
+    transform: translateY(1px);
+  }
+}
+
+.secondary {
+  background-color: transparent;
+  border-color: $secondary;
+  color: $secondary;
+
+  &:hover:not(:disabled) {
+    background-color: $secondary;
+    color: white;
+  }
+
+  &:active:not(:disabled) {
+    background-color: color.adjust($secondary, $lightness: -8%);
+    border-color: color.adjust($secondary, $lightness: -8%);
+    transform: translateY(1px);
+  }
+}
+
+.success {
+  background-color: $success;
+  border-color: $success;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust($success, $lightness: -8%);
+    border-color: color.adjust($success, $lightness: -8%);
+  }
+
+  &:active:not(:disabled) {
+    background-color: color.adjust($success, $lightness: -12%);
+    transform: translateY(1px);
+  }
+}
+
+.danger {
+  background-color: $danger;
+  border-color: $danger;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: color.adjust($danger, $lightness: -8%);
+    border-color: color.adjust($danger, $lightness: -8%);
+  }
+
+  &:active:not(:disabled) {
+    background-color: color.adjust($danger, $lightness: -12%);
+    transform: translateY(1px);
+  }
+}
+
+// Sizes
+.sm {
+  padding: $space-1 $space-3;
+  font-size: $font-size-sm;
+  border-radius: $radius-sm;
+}
+
+.lg {
+  padding: $space-3 $space-6;
+  font-size: $font-size-lg;
+  border-radius: $radius-lg;
+}
+
+.xl {
+  padding: $space-4 $space-8;
+  font-size: $font-size-xl;
+  border-radius: $radius-xl;
+}
+
+// Full width
+.full {
+  width: 100%;
+}
+
+// Loading state
+.loading {
+  position: relative;
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

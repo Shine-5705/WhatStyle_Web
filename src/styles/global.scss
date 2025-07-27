@@ -1,0 +1,34 @@
+@use './variables' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $font-family;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f8fafc;
+  color: $dark;
+  font-size: $font-size-base;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+p {
+  margin: 0 0 $space-4 0;
+}
+
+button {
+  font-family: inherit;
+}
