@@ -3,6 +3,7 @@
   import Card from '../components/Card.svelte'
   import Hero from '../components/Hero.svelte'
   import Navbar from '../components/Navbar.svelte'
+  import Image from '../components/ui/Image.svelte';
   import '../styles/global.scss'
   
   let loading = $state(false)
@@ -185,6 +186,7 @@
         {/snippet}
       </Card>
     </div>
+    <Image />
   </section>
 </main>
 
