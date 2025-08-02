@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { StructuredData } from "@/components/StructuredData";
 import { SEO } from "@/config/seo";
 import { organizationSchema } from "@/lib/seo";
 import FloatingNavbar from "@/components/ui/FloatingNavbar";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-inter'
+  variable: '--font-dm-sans',
 });
 
 export const viewport: Viewport = {
@@ -80,7 +80,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={dmSans.variable}>
       <head>
         <StructuredData data={organizationSchema()} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -89,7 +89,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body
-        className={`${inter.variable} antialiased`}
+        className={`${dmSans.variable} antialiased`}
       >
         <a
           href="#main-content"
