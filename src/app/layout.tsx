@@ -4,6 +4,7 @@ import "./globals.css";
 import { StructuredData } from "@/components/StructuredData";
 import { SEO } from "@/config/seo";
 import { organizationSchema } from "@/lib/seo";
+import FloatingNavbar from "@/components/ui/FloatingNavbar";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -96,6 +97,7 @@ export default function RootLayout({
         >
           Skip to main content </a>
         <div id="main-content">
+          <FloatingNavbar />
           {children}
         </div>
       </body>
