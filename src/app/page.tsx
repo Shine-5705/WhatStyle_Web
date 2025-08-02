@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { createMetadata, softwareApplicationSchema } from '@/lib/seo';
 import { StructuredData } from '@/components/StructuredData';
-import HeroSection from '@/components/Hero';
+import HeroSection from '@/components/sections/HeroSection';
 
 export const metadata: Metadata = createMetadata({
   title: 'WhatStyle AI',
@@ -15,11 +15,7 @@ export default function Home() {
   return (
     <>
       <StructuredData data={softwareApplicationSchema()} />
-      <main>
-        <h1>WhatStyle AI Bot</h1>
-        <p>AI Bot to reply contacts on your WhatsApp</p>
-        <HeroSection />
-      </main>
+      <HeroSection />
     </>
   );
 }
